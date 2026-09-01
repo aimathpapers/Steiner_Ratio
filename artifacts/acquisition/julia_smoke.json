@@ -1,0 +1,24 @@
+{
+  "schema": "steiner-audit/external-run/v1",
+  "kind": "their-checker-smoke-run",
+  "date_utc": "2026-08-12",
+  "command": "julia --threads auto verify_certificate.jl --f-ge-d",
+  "cwd": "vendor/Steiner-Ratio/certificate/d_regular",
+  "snapshot_commit": "709673a8926fed0ef981d7db36dafcdf6f4a8a1d",
+  "inputs": {
+    "certificate": {
+      "path": "d_regular/certificate_rho=0.8559_f_ge_d.bin",
+      "sha256": "d45ca86b1607ef0d9451cd35aa5caea9d037849c8770e7b3b43aedd171e5c262"
+    }
+  },
+  "toolchain": {
+    "julia": "1.12.6",
+    "IntervalArithmetic.jl": "1.0.10",
+    "StaticArrays.jl": "1.9.18",
+    "note": "their repo pins no Julia package versions; these are what Pkg resolved on 2026-08-12 (reproducibility gap, see research doc)"
+  },
+  "exit_code": 0,
+  "verdict_line": "All 1888501 regions verified.",
+  "wall_seconds": 92.4,
+  "claim_scope": "certificate layer only: their checker, their semantics (vertex-parity), our machine. Establishes the snapshot is usable; not an independent verification."
+}

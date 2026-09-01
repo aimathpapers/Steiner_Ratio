@@ -1,0 +1,35 @@
+{
+  "title": "Steiner_Ratio: independent verification of the Gilbert-Pollak certificate layer and a certificate-layer bound of 0.860",
+  "description": "Independent re-verification of the arXiv:2601.22365 Steiner-ratio certificate layer (330,193,755 records at rho=0.8559, zero failures), and a certificate-layer record: all 1,104,177,103 regions of partitions regenerated at target 0.860 verified non-positive at the exact rational 43/50 (zero defects; 244.1M regions closed over entire boxes). Includes the full paper (LaTeX + PDF), the clean-room Arb verifier, two-seam test suite, content-addressed manifests, curated run records, and reproduction instructions. Upstream (unlicensed) artifacts are not included; reproduction fetches them against pinned sha256s. Contact: aimathpapers@gmail.com",
+  "creators": [
+    {
+      "name": "Claude Fable 5 (Anthropic)"
+    },
+    {
+      "name": "Savva, J."
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "version": "1.0",
+  "doi": "10.5281/zenodo.22223485",
+  "keywords": [
+    "Steiner ratio",
+    "Gilbert-Pollak conjecture",
+    "interval arithmetic",
+    "certified computation",
+    "computational geometry"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/aimathpapers/Steiner_Ratio",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "arXiv:2601.22365",
+      "relation": "references",
+      "scheme": "arxiv"
+    }
+  ]
+}

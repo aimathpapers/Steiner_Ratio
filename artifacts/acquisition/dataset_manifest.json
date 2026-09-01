@@ -1,0 +1,68 @@
+{
+  "schema": "steiner-audit/manifest/v1",
+  "created_utc": "2026-08-12T07:52:13+00:00",
+  "source": {
+    "kind": "huggingface-dataset",
+    "dataset": "keyisi/steiner-ratio",
+    "url": "https://huggingface.co/datasets/keyisi/steiner-ratio",
+    "published_files": 9
+  },
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 2504,
+      "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular/certificate_rho=0.8559_f_ge_d.bin",
+      "bytes": 173742092,
+      "sha256": "d45ca86b1607ef0d9451cd35aa5caea9d037849c8770e7b3b43aedd171e5c262",
+      "publisher_sha256": "d45ca86b1607ef0d9451cd35aa5caea9d037849c8770e7b3b43aedd171e5c262"
+    },
+    {
+      "path": "d_regular/certificate_rho=0.8559_f_le_d.bin",
+      "bytes": 6854366232,
+      "sha256": "86a449864d4f9f1d4c089004ff03ea8c63a05e19dcacfa8df50027f2044e150e",
+      "publisher_sha256": "86a449864d4f9f1d4c089004ff03ea8c63a05e19dcacfa8df50027f2044e150e"
+    },
+    {
+      "path": "d_regular/child_rho=0.8559_f_ge_d.bin",
+      "bytes": 30215760,
+      "sha256": "474596b97298967328b3b5e40d2ef4b51235c63044327d9f178ad415babeab77",
+      "publisher_sha256": "474596b97298967328b3b5e40d2ef4b51235c63044327d9f178ad415babeab77"
+    },
+    {
+      "path": "d_regular/child_rho=0.8559_f_le_d.bin",
+      "bytes": 1015461152,
+      "sha256": "01aaf60617d494177ea25e9e1c79cfd1080a8d24560b4b57fd52de356b9b8d8c",
+      "publisher_sha256": "01aaf60617d494177ea25e9e1c79cfd1080a8d24560b4b57fd52de356b9b8d8c"
+    },
+    {
+      "path": "d_steiner/certificate_rho=0.8559_f_ge_d.bin",
+      "bytes": 669965800,
+      "sha256": "c57411be0a161de8aff4a00b8d1b271f66aa2f3b4c2c610c5b62136f6dca6848",
+      "publisher_sha256": "c57411be0a161de8aff4a00b8d1b271f66aa2f3b4c2c610c5b62136f6dca6848"
+    },
+    {
+      "path": "d_steiner/certificate_rho=0.8559_f_le_d.bin",
+      "bytes": 36321033000,
+      "sha256": "08535b427c883fc8fe46c6e8e7d49f37d5f3d6765047265b693bf8d51d2913f4",
+      "publisher_sha256": "08535b427c883fc8fe46c6e8e7d49f37d5f3d6765047265b693bf8d51d2913f4"
+    },
+    {
+      "path": "d_steiner/child_rho=0.8559_f_ge_d.bin",
+      "bytes": 86446176,
+      "sha256": "71fc98d17d158781adf504f59898adb067a2111cd6c9ef98ff5c802286d42c0b",
+      "publisher_sha256": "71fc98d17d158781adf504f59898adb067a2111cd6c9ef98ff5c802286d42c0b"
+    },
+    {
+      "path": "d_steiner/child_rho=0.8559_f_le_d.bin",
+      "bytes": 4150973152,
+      "sha256": "da0f0d52268b3e0f55433b53631e4fe18d6c160a5a38586fe9761d499aa5290c",
+      "publisher_sha256": "da0f0d52268b3e0f55433b53631e4fe18d6c160a5a38586fe9761d499aa5290c"
+    }
+  ],
+  "file_count": 9,
+  "total_bytes": 49302205868
+}

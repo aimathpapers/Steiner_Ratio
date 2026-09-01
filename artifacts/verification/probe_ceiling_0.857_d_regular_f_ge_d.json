@@ -1,0 +1,32 @@
+{
+  "schema": "steiner-audit/ceiling/v1",
+  "family": "d_regular",
+  "subcase": "f_ge_d",
+  "certificate": "/Users/jsavva/MathProof/steiner/vendor/regen/d_regular@0.857/certificate_rho=0.857_f_ge_d.bin",
+  "certificate_sha256": null,
+  "code_revision": "63976b23e9f96f1e56a69d096da9f73a8452646a",
+  "generated_utc": "2026-08-18T00:52:56+00:00",
+  "records_in_file": 72995437,
+  "analyzed": 50000,
+  "exhaustive": false,
+  "sample": 50000,
+  "seed": 20260813,
+  "limit": null,
+  "prec_ladder": [
+    128,
+    256,
+    512
+  ],
+  "semantics": "vertex",
+  "drive_rho": null,
+  "fullbox_budget": null,
+  "outcome_counts": {
+    "bounded": 50000
+  },
+  "ceiling_lo": 0.8570000827562505,
+  "ceiling_hi": 0.8570000827562505,
+  "ceiling_region_id": 656270748,
+  "fullbox_closed": 0,
+  "fullbox_ceiling_lo": null,
+  "inherited_obligations": "Inherited lemma-layer obligations are rho-uniform: trapped-point polygons, topology validity, and the monotonicity/unimodality claims are about constituent lengths, never about rho, so they transfer to every rho unchanged. Full-box leaf certificates need no unimodality."
+}

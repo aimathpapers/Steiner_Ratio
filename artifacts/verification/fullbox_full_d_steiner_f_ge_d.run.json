@@ -1,0 +1,27 @@
+{
+  "kind": "full-box-first-run",
+  "family": "d_steiner",
+  "subcase": "f_ge_d",
+  "certificate": "vendor/dataset/d_steiner/certificate_rho=0.8559_f_ge_d.bin",
+  "certificate_sha256": "c57411be0a161de8aff4a00b8d1b271f66aa2f3b4c2c610c5b62136f6dca6848",
+  "records_in_file": 5402950,
+  "limit": null,
+  "sample": null,
+  "seed": null,
+  "prec_ladder": [
+    128,
+    256,
+    512
+  ],
+  "mode": "full-box-first",
+  "fullbox_budget": 200,
+  "schema": "steiner-audit/run/v1",
+  "code_revision": "61a85198dea688cd938ef37a6fa02b4c22f419fd",
+  "started_utc": "2026-08-13T07:20:44+00:00",
+  "finished_utc": "2026-08-13T07:29:57+00:00",
+  "counts": {
+    "vertex_parity": 3815349,
+    "skipped": 4983,
+    "full_box": 1582618
+  }
+}

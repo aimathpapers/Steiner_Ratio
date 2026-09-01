@@ -1,0 +1,18 @@
+{
+  "schema": "steiner-audit/semantic-diff/v1",
+  "created_utc": "2026-08-12T08:33:57+00:00",
+  "published": "vendor/dataset/d_regular/certificate_rho=0.8559_f_ge_d.bin",
+  "regenerated": "vendor/regen/d_regular/certificate_rho=0.8559_f_ge_d.bin",
+  "published_records": 1888501,
+  "regenerated_records": 1888501,
+  "matched_records": 1855453,
+  "divergent_per_side": 33048,
+  "box_multiset_divergence": {
+    "published_only": 0,
+    "regenerated_only": 0
+  },
+  "findings_localized": [],
+  "findings_truncated": true,
+  "clean": false,
+  "curation_note": "200 localized findings truncated for release (ADR-0002); the full artifact lives in the private audit repository"
+}

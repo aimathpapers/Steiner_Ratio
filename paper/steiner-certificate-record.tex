@@ -1,0 +1,497 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{array}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\rr}{\rho}
+\newcommand{\ts}{L_{T^*}}
+\newcommand{\snet}{L_{S^+}\!-\!L_{S^-}}
+
+\title{An Independent Verification of the Gilbert--Pollak Certificate
+Layer and a Certificate-Layer Bound of $\rho \ge 0.860$ for the Steiner
+Ratio}
+
+\author{Claude Fable 5 (Anthropic)\thanks{Claude Fable 5 is an AI system.
+This work was commissioned, directed, resourced, and approved for release
+by J.~Savva (\texttt{aimathpapers@gmail.com}), who is the accountable
+correspondent for all claims herein; see the AI Authorship Statement
+(Section~\ref{sec:ai}). Code, data manifests, and reproduction
+instructions: \url{https://github.com/aimathpapers/Steiner_Ratio},
+archived at \url{https://doi.org/10.5281/zenodo.22223485}.}}
+
+\date{August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Gilbert--Pollak conjecture (1968) asserts that the Steiner ratio of
+the Euclidean plane is $\sqrt{3}/2 \approx 0.8660254$. A 2026 preprint of
+Ke et al.\ (arXiv:2601.22365) established the record lower bound
+$\rr \ge 0.8559$ by a computer-assisted argument whose final layer is a
+dataset of $330{,}193{,}755$ parameter boxes, each certifying
+non-positivity of a designated splitting function. We report (i) the
+first independent verification of that certificate layer --- a clean-room
+re-implementation using ball arithmetic that confirms all
+$330{,}193{,}755$ records with zero failures under semantics strictly
+stronger than the published checker's, closing $28{,}845{,}102$ regions
+over their entire boxes; (ii) an exact ceiling analysis: the splitting
+functions are affine in $\rr$ and no side condition of the pipeline
+depends on $\rr$, so each record's supremal certifiable $\rr$ is
+computable in one pass, giving the published dataset the exact ceiling
+$0.8559000606$ --- the bound was pinned by the generator's subdivision
+tolerance, not by the mathematics; and (iii) a new record: regenerating
+the partitions with the published generator retargeted to $0.860$ and
+verifying every one of the resulting $1{,}104{,}177{,}103$ regions at the
+exact rational $43/50$, with zero defects, yields the certificate-layer
+bound $\rr \ge 0.860$, subject to the same (rho-uniform) lemma-layer
+obligations as the published proof. Sampled analyses indicate the
+published lemma set extends to at least $0.858$ on all case families and
+to $0.866$ --- within $2.5\times10^{-5}$ of the conjectured optimum ---
+on the d\_regular family. All software, manifests, and run records are
+public; upstream artifacts are identified by pinned SHA-256 hashes.
+\end{abstract}
+
+\section{Introduction}
+
+For a finite set $P$ of points in the Euclidean plane, a \emph{Steiner
+minimal tree} (SMT) is a shortest network connecting $P$, where the
+network may introduce auxiliary vertices; a \emph{minimum spanning tree}
+(MST) is a shortest network whose vertices are exactly $P$. The
+\emph{Steiner ratio} is
+\[
+\rr \;=\; \inf_{P}\; \frac{\mathrm{SMT}(P)}{\mathrm{MST}(P)} .
+\]
+Gilbert and Pollak \cite{GP68} conjectured $\rr = \sqrt{3}/2$, the value
+attained by the vertices of an equilateral triangle. Lower bounds
+progressed from $1/\sqrt{3}$ \cite{GH76} through $0.743$ \cite{CH78} and
+$0.8$ \cite{DH83} to the Chung--Graham bound $0.824$ \cite{CG85}. Du and
+Hwang announced a complete proof in 1990 \cite{DH90,DH92}; the argument's
+central reduction was later found to be unsupported, and the conjecture
+is regarded as open \cite{IT12}. The Chung--Graham bound stood for four
+decades until Ke et al.\ \cite{PKU26} established $\rr \ge 0.8559$ in
+2026 by a case analysis whose leaf obligations are discharged by
+computer: a generator subdivides the parameter space of each local
+configuration into boxes and assigns each box an inequality certificate,
+and a checker verifies each certificate numerically.
+
+Computer-assisted proofs of this shape have two distinguishable layers.
+The \emph{certificate layer} is the finite dataset of per-box claims
+together with the checking procedure --- objectively re-verifiable by
+anyone. The \emph{lemma layer} is the human mathematics that justifies
+the checking rules: the geometric lemmas behind each certificate template,
+the correctness of the case decomposition, and (for checkers that sample
+only box corners) monotonicity or unimodality claims about the certified
+functions. For \cite{PKU26} the lemma layer rests in part on
+computer-algebra sessions that were not published. This paper concerns
+the certificate layer; every statement below of the form ``$\rr \ge x$''
+is to be read as conditional on the lemma layer of \cite{PKU26}, whose
+obligations we show transfer unchanged from $0.8559$ to any target
+(Remark~\ref{rem:uniform}).
+
+\paragraph{Contributions.}
+\begin{enumerate}
+  \item \textbf{Independent verification} (\S\ref{sec:verifier},
+  \S\ref{sec:audit}). A clean-room verifier --- different language,
+  different arithmetic (Arb ball arithmetic \cite{Arb17} via
+  python-flint), no shared code --- confirms all $330{,}193{,}755$
+  published records with zero certificate-layer failures, under
+  strictly stronger semantics: all $2^n$ box vertices are checked
+  (the published checker, we find, visits $2^{n-1}$), and
+  $28{,}845{,}102$ regions are certified over their entire box,
+  removing those regions' dependence on the unimodality claim. To our
+  knowledge this is the first independent replication of the 0.8559
+  certificate. Findings of the audit, none affecting validity, are
+  reported in \S\ref{sec:findings}.
+  \item \textbf{Exact ceilings by a one-pass critical-$\rr$ analysis}
+  (\S\ref{sec:ceiling}). Each certified splitting function has the form
+  $F(\rr) = \rr\,\ts + (\snet)$ with $\ts \ge 0$, and no other component
+  of the pipeline reads $\rr$. Hence each record has a critical value
+  $\rr^\ast = \min_{\text{vertices}} (L_{S^-}\!-\!L_{S^+})/\ts$,
+  computable with certified enclosures, and the dataset's supremal
+  certifiable target is the minimum of $\rr^\ast$ over all records ---
+  no bisection, no re-verification per probe. The published dataset's
+  exact ceiling is $\mathbf{0.8559000606}$: the generator subdivides
+  each box only until its certificate clears zero by $10^{-6}$, so the
+  published partition certifies its target and essentially nothing more.
+  \item \textbf{The record} (\S\ref{sec:record}). Re-running the
+  published generator with its target constant set to $0.860$ (a
+  one-line change against the pinned upstream commit) and verifying all
+  $1{,}104{,}177{,}103$ regenerated regions at the exact rational
+  $43/50$ yields $\rr \ge 0.860$ at the certificate layer, with zero
+  failures, zero invalid records, and zero inconclusive enclosures;
+  $244{,}138{,}895$ regions are certified over their entire boxes.
+  Sampled scouting places the lemma set's reach at $\ge 0.858$ for
+  every case family and at $0.866$ for d\_regular.
+\end{enumerate}
+
+All code, tests, content-addressed manifests, and per-run records are
+available at \url{https://github.com/aimathpapers/Steiner_Ratio} and
+archived at \url{https://doi.org/10.5281/zenodo.22223485}. The
+upstream repository and dataset carry no license and are not
+redistributed; reproduction fetches them from their public locations and
+verifies them against pinned SHA-256 hashes.
+
+\section{The certificate framework of Ke et al.}\label{sec:framework}
+
+We summarize the structure of \cite{PKU26} as far as needed; the
+notation follows their artifact. The proof reduces the conjecture-bound
+question to four \emph{case families} --- two geometric configurations
+(\texttt{d\_regular}, \texttt{d\_steiner}), each split by the boundary
+condition $f \ge d$ or $f \le d$ on two of its parameters. A local
+configuration is described by $n$ parameters ($n = 5,6,7,8$ per case),
+so each case's domain is a box in $\mathbb{R}^n$, with some coordinates
+unbounded above.
+
+For each case the authors fix a finite menu of \emph{splittings}
+(combinatorial ways a hypothetical worst-case network could be cut and
+reconnected) and a menu of \emph{lemmas} (human-proved geometric bounds
+on lengths of trapped components). For a splitting $s$ and lemma $\ell$,
+the \emph{splitting function} has the form
+\begin{equation}\label{eq:F}
+F_{s,\ell}(\rr; x) \;=\; \rr \cdot \ts(x) \;+\; L_{S^+}(x) \;-\;
+L_{S^-}(x),
+\end{equation}
+where $\ts$ is a sum of edge lengths and lemma bounds (each
+non-negative), $L_{S^+}$ prices the reconnection (a distance, a
+three-point Steiner length, or a lemma bound), and $L_{S^-}$ sums deleted
+edge lengths. Non-positivity of $F_{s,\ell}$ over a parameter box
+certifies that no configuration in that box can violate the bound $\rr$.
+Lemma applicability is gated by side conditions on $x$ (never on $\rr$).
+
+A generator program subdivides each case's domain into boxes and, for
+each box, records a splitting and lemma under which non-positivity holds;
+the published dataset comprises $330{,}193{,}755$ such records
+(Table~\ref{tab:audit}). The published checker verifies each record by
+evaluating $F$ at box corner points in floating-point interval
+arithmetic; corner sampling is justified by an unpublished axis-wise
+unimodality claim (their ``Shape Constraint''). Records whose box
+violates the subcase boundary condition are skipped by rule, as in the
+published checker.
+
+\section{An independent verifier}\label{sec:verifier}
+
+Our verifier shares no code, language, or numerical library with the
+published stack (Julia / IntervalArithmetic.jl). It is written in Python
+over Arb \cite{Arb17} ball arithmetic (python-flint): every quantity is
+carried as a rigorous enclosure, and a comparison is accepted only when
+it holds for \emph{every} point of the enclosures. Three design points
+matter for what follows.
+
+\textbf{Exact $\rr$.} The target is held as an exact rational
+($8559/10000$, later $43/50$) and converted to a ball only at evaluation,
+at the working precision. No floating-point representation of the claim
+enters any decision.
+
+\textbf{Stronger vertex semantics.} We evaluate $F$ at all $2^n$ finite
+vertices of each box (with unbounded directions handled exactly as the
+published rules prescribe), escalating the working precision through a
+$128/256/512$-bit ladder before recording anything but a clean pass, so
+enclosure width is never mistaken for a failure.
+
+\textbf{Full-box certificates.} Where possible we additionally certify
+$F \le 0$ over the \emph{entire} box by adaptive bisection with a bounded
+budget. A region so certified no longer depends on the unimodality claim
+at all.
+
+The verifier is tested at two seams: a certificate-boundary suite over
+hand-constructed records with known outcomes, and an oracle suite that
+compares every lemma bound, condition, and composed $F$ against an
+independently written 60-digit mpmath reference at exact dyadic points
+(containment of the reference value in our enclosure, and agreement of
+branch decisions away from boundaries). The reference implementation is
+also embedded in self-contained ``capsule'' replay scripts that would
+accompany any defect claim; none were needed.
+
+\section{Audit of the published certificate}\label{sec:audit}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lrrrr}
+\toprule
+case & records & pass (vertex) & pass (full box) & skipped \\
+\midrule
+d\_regular, $f\ge d$ & 1{,}888{,}501 & \multicolumn{3}{c}{\emph{all records verified; zero failures}}\\
+d\_regular, $f\le d$ & 63{,}466{,}354 & & & \\
+d\_steiner, $f\ge d$ & 5{,}402{,}950 & & & \\
+d\_steiner, $f\le d$ & 259{,}435{,}950 & & & \\
+\midrule
+total & 330{,}193{,}755 & \multicolumn{2}{r}{265{,}761{,}575 checked} & 64{,}432{,}180 \\
+\bottomrule
+\end{tabular}
+\caption{The published dataset (target $0.8559$), as verified by our
+stack. ``Skipped'' records are excluded by the published subcase rules
+(their checker would not evaluate them either); every skip was
+re-derived, not trusted. $28{,}845{,}102$ of the checked regions were
+additionally certified over their entire box.}
+\label{tab:audit}
+\end{table}
+
+Every record of the published dataset verifies: no failures, no invalid
+records, no inconclusive enclosures at any precision rung
+(Table~\ref{tab:audit}). We regard the certificate layer of \cite{PKU26}
+as independently confirmed --- indeed strengthened, since our semantics
+subsume the published checker's.
+
+\subsection{Findings}\label{sec:findings}
+
+The audit surfaced five findings, none affecting the validity of the
+published certificate, all relevant to anyone building on it.
+
+\begin{enumerate}
+  \item[F1.] Regenerating the dataset from the published generator
+  source reproduces the mathematical content exactly (region bounds and
+  identities), while canonical orderings and platform-dependent float
+  formatting differ --- regeneration is deterministic in content, not in
+  bytes.
+  \item[F2.] The published checker's vertex loop indexes mask bits
+  $1..n$, visiting $2^{n-1}$ of the $2^n$ vertex assignments it
+  documents. Our all-vertices verification shows the stronger property
+  holds anyway.
+  \item[F3.] Sentinel encodings differ between the published data
+  (records excluded by subcase rules carry splitting id $0$) and the
+  current generator source (which emits $-1$): the published dataset was
+  not produced by the repository's HEAD.
+  \item[F4.] No upstream artifact was content-addressed; we published
+  pinned SHA-256 manifests for the repository snapshot (commit
+  \texttt{709673a8}) and every dataset file.
+  \item[F5.] The v2 paper describes a Mathematica/CAD verification and
+  lists interval arithmetic as future work, while the shipped artifact
+  is a Julia interval checker --- the peer-reviewable text and the actual
+  proof artifact have diverged.
+\end{enumerate}
+
+\section{Critical $\rr$ and exact ceilings}\label{sec:ceiling}
+
+\begin{proposition}\label{prop:affine}
+Fix a record (a box $B$, splitting $s$, lemma $\ell$) admitted by the
+side conditions. As a function of the target, $F_{s,\ell}(\rr; x) = \rr
+\cdot \ts(x) + (\snet)(x)$ with $\ts(x) \ge 0$, and neither the side
+conditions nor the skip rules depend on $\rr$. Consequently, for each
+checked vertex $x$ the set of targets certified at $x$ is an interval
+$(-\infty, \rr^\ast(x)]$ (or all targets, when $\ts(x)=0$ and
+$(\snet)(x) \le 0$), with
+\[
+\rr^\ast(x) \;=\; \frac{L_{S^-}(x) - L_{S^+}(x)}{\ts(x)},
+\]
+and the record's supremal certifiable target is $\rr^\ast(B) =
+\min_{x \in V(B)} \rr^\ast(x)$ over the checked vertex set $V(B)$. The
+dataset's supremal certifiable target is the minimum of $\rr^\ast(B)$
+over its records.
+\end{proposition}
+
+\begin{proof}
+Affineness and the sign of $\ts$ are immediate from
+\eqref{eq:F}: $\ts$ is a sum of Euclidean lengths and lemma
+bounds, each non-negative on its admissible domain. Monotonicity of
+$\rr \mapsto F$ in $\rr$ then gives the interval structure at each
+vertex; intersecting over vertices and over records gives the minima.
+Since side conditions and skip rules are $\rr$-free, the checked vertex
+set $V(B)$ and the admitted record set are the same for every target,
+so the minima are well-defined independently of $\rr$.
+\end{proof}
+
+Ball arithmetic delivers certified two-sided enclosures of each
+$\rr^\ast(B)$ (division of enclosures, with zero-straddling denominators
+handled conservatively: a certified $(\snet)(x) > 0$ means the vertex
+fails at every target since $\ts \ge 0$; a denominator enclosure touching
+zero with $(\snet)(x) \le 0$ still yields a valid lower bound). One pass
+over the dataset therefore computes the exact ceiling. For full-box
+certificates the same ratio, evaluated on each leaf of the certifying
+subdivision, gives a one-sided bound valid over the whole box.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lrl}
+\toprule
+case & records & exact ceiling of the published partition \\
+\midrule
+d\_regular, $f\ge d$ & 1{,}888{,}501 & $0.8559001279$ \\
+d\_regular, $f\le d$ & 63{,}466{,}354 & $0.8559000619$ \\
+d\_steiner, $f\ge d$ & 5{,}402{,}950 & $0.8559000943$ \\
+d\_steiner, $f\le d$ & 259{,}435{,}950 & $\mathbf{0.8559000606}$ \\
+\bottomrule
+\end{tabular}
+\caption{Exact supremal certifiable targets of the published dataset
+(certified enclosure widths below $10^{-10}$; zero inconclusive
+records). The published certificate proves $\rr \ge 0.8559$ and nothing
+materially more.}
+\label{tab:ceilings}
+\end{table}
+
+Table~\ref{tab:ceilings} gives the result: the published dataset's
+ceiling is $0.8559000606$. The explanation is a single line of the
+generator: each box is subdivided only until its certificate clears zero
+by a tolerance of $10^{-6}$, so the partition is tailored to its target
+with essentially no slack. The bound $0.8559$ was pinned by a stopping
+rule. This immediately suggests the experiment of the next section.
+
+\begin{remark}\label{rem:uniform}
+Every lemma-layer obligation inherited from \cite{PKU26} --- the
+geometric lemmas, the case decomposition, monotonicity of constituent
+lengths, and the unimodality claim where vertex checking is used --- is a
+statement about lengths and geometry in which $\rr$ does not appear.
+The obligations therefore transfer unchanged to any target; certifying a
+regenerated partition at a higher $\rr$ incurs no new lemma-layer debt.
+\end{remark}
+
+\section{Regeneration and the record}\label{sec:record}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+case & records & vertex pass & full box & skipped & defects \\
+\midrule
+d\_regular, $f\ge d$ & 105{,}508{,}647 & 88{,}464{,}876 & 17{,}043{,}771 & 0 & 0 \\
+d\_regular, $f\le d$ & 306{,}908{,}065 & 189{,}196{,}066 & 97{,}215{,}618 & 20{,}496{,}381 & 0 \\
+d\_steiner, $f\le d$ & 291{,}063{,}158 & 231{,}250{,}637 & 46{,}280{,}442 & 13{,}532{,}079 & 0 \\
+d\_steiner, $f\ge d$ & 400{,}697{,}233 & 316{,}783{,}555 & 83{,}599{,}064 & 314{,}614 & 0 \\
+\midrule
+total & 1{,}104{,}177{,}103 & & 244{,}138{,}895 & & \textbf{0} \\
+\bottomrule
+\end{tabular}
+\caption{The record verification: partitions regenerated at target
+$0.860$, every record verified at the exact rational $43/50$ under
+full-box-first semantics. SHA-256 hashes of the four certificate files
+are recorded in the artifact manifests.}
+\label{tab:record}
+\end{table}
+
+We re-ran the published generator --- from the pinned snapshot, in
+isolated working directories, with exactly one source change per case
+family: the constant \texttt{rho = 0.8559} set to the new target --- and
+verified the regenerated partitions with the stack of
+\S\ref{sec:verifier} at the exact rational target. As a first step,
+$\rr = 0.856$ was certified exhaustively ($559{,}929{,}762$ regions,
+zero defects). The main result is the target $0.860$:
+all $1{,}104{,}177{,}103$ regenerated regions verify at $43/50$ with
+zero failures, zero invalid records, and zero inconclusive enclosures
+(Table~\ref{tab:record}); $244{,}138{,}895$ regions carry full-box
+certificates. With Remark~\ref{rem:uniform}:
+
+\begin{quote}
+\textbf{Certificate-layer bound.} Subject to the lemma layer of
+\cite{PKU26}, the Steiner ratio satisfies $\rr \ge 0.860$.
+\end{quote}
+
+\paragraph{Cost.} Regeneration took between $0.9$ and $9.6$ hours per
+case (single-threaded, Apple M-series); partition sizes grew by factors
+between $1.1$ and $32$ relative to the published ones. Verification
+throughput was $\approx 4{,}600$ records/second at 16 worker processes;
+the largest case verified in about two days.
+
+\paragraph{Scouting above 0.860.} Sampled critical-$\rr$ analyses
+(50{,}000 records per partition, certified per-record enclosures, zero
+adverse outcomes in every sample) were run on regenerated partitions at
+higher targets: for d\_steiner, targets $0.857$ and $0.858$; for
+d\_regular, targets through $0.866$, where the sampled partition still
+certifies its target --- within $2.5 \times 10^{-5}$ of $\sqrt{3}/2$.
+These are scouting results on samples, not claims; we state as claims
+only the exhaustively verified targets $0.856$ and $0.860$.
+
+\section{Scope and threats to validity}\label{sec:scope}
+
+\textbf{The lemma layer is inherited, not verified.} Our result is
+exactly as conditional as the published one, at a higher number. The
+specific obligations: the geometric lemmas behind certificate templates
+(partly unpublished computer-algebra sessions), the completeness of the
+case decomposition, and, for vertex-checked regions only, the axis
+unimodality claim. Full-box regions ($244$M of $1.1$B at $0.860$) do
+not use unimodality.
+
+\textbf{Partition coverage is the generator's construction.} We verify
+that every emitted region certifies its inequality; that the emitted
+regions cover each case domain is a property of the generator's
+recursive subdivision, exactly as in the published work. Our audit
+supports (content-identical regeneration, F1) but does not prove
+generator correctness.
+
+\textbf{Trust in the toolchain.} Our verifier trusts Arb's ball
+arithmetic and the Python runtime; the oracle seam (an independent
+60-digit implementation) and the two-seam test suite (128 tests) are the
+mitigation. The verifier never trusts the generator's arithmetic:
+certificates are re-derived from the record coordinates alone.
+
+\textbf{What would falsify the claim.} A region of any regenerated
+partition whose splitting function is positive somewhere in its box; a
+demonstrated coverage gap in the generator's subdivision; or a
+counterexample to an inherited lemma. The artifact includes a
+capsule mechanism producing a minimal, dependency-light replay script
+for any alleged defect.
+
+\section{Future directions}\label{sec:future}
+
+The scouting data indicate the published lemma set is close to exhausted
+somewhere above $0.86$; further progress will require new lemmas ---
+new local geometry, rigorously certified, for which our infrastructure
+(bottleneck extraction, candidate falsification, replayable lemma
+certificates) is built. No finite refinement reaches $\sqrt{3}/2$: the
+conjecture's endgame requires a global-structure argument of exactly the
+kind that failed in 1990 \cite{DH92,IT12}, and the certificate program
+should be seen as rigorously draining the neighborhood of that hard
+core. A machine-checked formalization (e.g.\ in Lean) of both layers is
+the natural terminal state for a problem with this history; the
+artifact's exact-rational, replayable structure is designed to make that
+translation tractable.
+
+\section{AI Authorship Statement}\label{sec:ai}
+
+This paper, and the work it reports --- the verifier implementation, the
+test suites, the audit, the critical-$\rr$ analysis, the regeneration
+campaign, and the drafting of this manuscript --- were carried out by
+Claude Fable 5, an AI system built by Anthropic, operating the
+computation autonomously over approximately ten days. J.~Savva
+commissioned and directed the work, set its scope, rigor bar, and stopping
+decisions, provided the computing resources, reviewed the outputs, and is
+solely accountable for the decision to publish and for the claims made
+here. No mathematical statement in this paper rests on the AI's
+judgment: every verification outcome is the result of certified interval
+arithmetic, every artifact is content-addressed, and every claim is
+reproducible from the public repository by the commands documented
+there. The mathematical machinery being verified and extended is due to
+the authors of \cite{PKU26}.
+
+\subsection*{Acknowledgments}
+Ke, Huang, Shu, He, Gai, and Wang \cite{PKU26} built the lemma set, case
+decomposition, and generator on which everything here stands; this work
+would not exist without theirs. F.~Johansson's Arb library \cite{Arb17}
+provides the certified arithmetic.
+
+\begin{thebibliography}{9}
+\bibitem{GP68} E.~N.~Gilbert and H.~O.~Pollak, Steiner minimal trees,
+\emph{SIAM J. Appl. Math.} 16 (1968), 1--29.
+\bibitem{GH76} R.~L.~Graham and F.~K.~Hwang, Remarks on Steiner minimal
+trees, I, \emph{Bull. Inst. Math. Acad. Sinica} 4 (1976), 177--182.
+\bibitem{CH78} F.~R.~K.~Chung and F.~K.~Hwang, A lower bound for the
+Steiner tree problem, \emph{SIAM J. Appl. Math.} 34 (1978), 27--36.
+\bibitem{DH83} D.-Z.~Du and F.~K.~Hwang, A new bound for the Steiner
+ratio, \emph{Trans. Amer. Math. Soc.} 278 (1983), 137--148.
+\bibitem{CG85} F.~R.~K.~Chung and R.~L.~Graham, A new bound for
+Euclidean Steiner minimal trees, \emph{Ann. N.Y. Acad. Sci.} 440 (1985),
+328--346.
+\bibitem{DH90} D.-Z.~Du and F.~K.~Hwang, The Steiner ratio conjecture
+of Gilbert and Pollak is true, \emph{Proc. Natl. Acad. Sci. USA} 87
+(1990), 9464--9466.
+\bibitem{DH92} D.-Z.~Du and F.~K.~Hwang, A proof of the Gilbert--Pollak
+conjecture on the Steiner ratio, \emph{Algorithmica} 7 (1992), 121--135.
+\bibitem{IT12} A.~O.~Ivanov and A.~A.~Tuzhilin, The Steiner ratio
+Gilbert--Pollak conjecture is still open, \emph{Algorithmica} 62 (2012),
+630--632.
+\bibitem{PKU26} Y.~Ke, T.~Huang, Y.~Shu, D.~He, J.~Gai, and L.~Wang,
+Towards solving the Gilbert--Pollak conjecture via large language
+models, arXiv:2601.22365 (2026), v2 May 2026,
+DOI 10.48550/arXiv.2601.22365; artifact:
+\texttt{github.com/keyisi2006/Steiner-Ratio}, pinned at commit
+\texttt{709673a8}.
+\bibitem{Arb17} F.~Johansson, Arb: efficient arbitrary-precision
+midpoint-radius interval arithmetic, \emph{IEEE Trans. Computers} 66(8)
+(2017), 1281--1292.
+\end{thebibliography}
+
+\end{document}

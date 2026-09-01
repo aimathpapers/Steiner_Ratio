@@ -1,0 +1,659 @@
+{
+  "schema": "steiner-audit/manifest/v1",
+  "created_utc": "2026-08-20T08:58:08+00:00",
+  "source": {
+    "kind": "regeneration",
+    "generator": "their plot_*.cpp from the pinned snapshot",
+    "snapshot_commit": "709673a8926fed0ef981d7db36dafcdf6f4a8a1d",
+    "state": {
+      "d_regular/f_ge_d": {
+        "status": "done",
+        "started_utc": "2026-08-12T08:30:43+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_regular/f_ge_d.log",
+        "wall_seconds": 8.6,
+        "exit_code": 0,
+        "finished_utc": "2026-08-12T08:30:52+00:00",
+        "outputs": {
+          "certificate_rho=0.8559_f_ge_d.bin": {
+            "bytes": 173742092,
+            "sha256": "d6e27ecfd6e962efb4aed3df5e3bde948d1bc2c8909f2665d7f3aac3a943ff15"
+          },
+          "child_rho=0.8559_f_ge_d.bin": {
+            "bytes": 30215760,
+            "sha256": "44e4277afa00731df1ed7bf04c8a2fe0926906eaa75f3b144ca1142621cb6c2f"
+          }
+        }
+      },
+      "d_regular/f_le_d": {
+        "status": "done",
+        "started_utc": "2026-08-12T08:35:26+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_regular/f_le_d.log",
+        "wall_seconds": 390.9,
+        "exit_code": 0,
+        "finished_utc": "2026-08-12T08:41:57+00:00",
+        "outputs": {
+          "certificate_rho=0.8559_f_le_d.bin": {
+            "bytes": 6854366232,
+            "sha256": "b91c2c55ab4f9a400c459e613a53dab064960641f2502bd20226a1712513ef26"
+          },
+          "child_rho=0.8559_f_le_d.bin": {
+            "bytes": 1015461152,
+            "sha256": "abc3112bff6e880196b00d283bec5ced40f0a41000c980359b49fd29204a0c80"
+          }
+        }
+      },
+      "d_steiner/f_ge_d": {
+        "status": "done",
+        "started_utc": "2026-08-12T15:38:30+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner/f_ge_d.log",
+        "wall_seconds": 249.2,
+        "exit_code": 0,
+        "finished_utc": "2026-08-12T15:42:39+00:00",
+        "outputs": {
+          "certificate_rho=0.8559_f_ge_d.bin": {
+            "bytes": 669965800,
+            "sha256": "d1ee33ee89bc79ca49d388444506c27a9b7bedcb674f3d9f89ecb129300db573"
+          },
+          "child_rho=0.8559_f_ge_d.bin": {
+            "bytes": 86446176,
+            "sha256": "27ccd6fef8bd2137d33ac9ddb8949d290965f337fa5414598a054d63aaf3e503"
+          }
+        }
+      },
+      "d_steiner/f_le_d": {
+        "status": "done",
+        "started_utc": "2026-08-12T15:42:40+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner/f_le_d.log",
+        "wall_seconds": 25657.0,
+        "exit_code": 0,
+        "finished_utc": "2026-08-12T22:50:17+00:00",
+        "outputs": {
+          "certificate_rho=0.8559_f_le_d.bin": {
+            "bytes": 36321033000,
+            "sha256": "2c3da6fc711b21cb816a07d3d983dc1ab0d1f9609bca8d5e6d7f8bb40c5563cf"
+          },
+          "child_rho=0.8559_f_le_d.bin": {
+            "bytes": 4150973152,
+            "sha256": "0567347e6d8f2ccadfb94c5a836a9c55d6f244b2545cf8ed5f3effcbb58d7943"
+          }
+        }
+      },
+      "d_regular/f_ge_d@rho=0.856": {
+        "status": "done",
+        "started_utc": "2026-08-14T06:56:49+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_regular@0.856/f_ge_d.log",
+        "wall_seconds": 2204.5,
+        "exit_code": 0,
+        "finished_utc": "2026-08-14T07:33:33+00:00",
+        "outputs": {
+          "certificate_rho=0.856_f_ge_d.bin": {
+            "bytes": 5581107044,
+            "sha256": "c9d449c27fe46012625b86af5439a1b34b790e60e5c9eec675ae8c07a903ff5b"
+          },
+          "child_rho=0.856_f_ge_d.bin": {
+            "bytes": 15029372944,
+            "sha256": "37b329b4b1a9e356c58baabeafcdab8450d81d9ad4d2299e0f76628a2ab970d7"
+          }
+        }
+      },
+      "d_regular/f_le_d@rho=0.856": {
+        "status": "done",
+        "started_utc": "2026-08-14T07:33:42+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_regular@0.856/f_le_d.log",
+        "wall_seconds": 302.8,
+        "exit_code": 0,
+        "finished_utc": "2026-08-14T07:38:45+00:00",
+        "outputs": {
+          "certificate_rho=0.856_f_le_d.bin": {
+            "bytes": 7549342668,
+            "sha256": "182356ffa11f4b2b671c34b8fa1fa1e24a901f086a0d83665013bf74619ef00d"
+          },
+          "child_rho=0.856_f_le_d.bin": {
+            "bytes": 1118420624,
+            "sha256": "830e5b60b7b62caca8a4db2dec399acbc9f10dc9b50c5c4574cc0fd7fb395f0b"
+          }
+        }
+      },
+      "d_steiner/f_ge_d@rho=0.856": {
+        "status": "done",
+        "started_utc": "2026-08-14T21:52:33+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.856/f_ge_d.log",
+        "wall_seconds": 34514.1,
+        "exit_code": 0,
+        "finished_utc": "2026-08-15T07:27:47+00:00",
+        "outputs": {
+          "certificate_rho=0.856_f_ge_d.bin": {
+            "bytes": 17042850904,
+            "sha256": "a3a9681b76f257069e59513264f43f4a4cc89058fca042e0d03ed75508d03bad"
+          },
+          "child_rho=0.856_f_ge_d.bin": {
+            "bytes": 13800923488,
+            "sha256": "c1314cf147cec9836e55ef20c4e64f6e454b69c333772eff72687a05127caf20"
+          }
+        }
+      },
+      "d_steiner/f_le_d@rho=0.856": {
+        "status": "done",
+        "started_utc": "2026-08-16T16:50:10+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.856/f_le_d.log",
+        "wall_seconds": 17453.8,
+        "exit_code": 0,
+        "finished_utc": "2026-08-16T21:41:04+00:00",
+        "outputs": {
+          "certificate_rho=0.856_f_le_d.bin": {
+            "bytes": 40869064320,
+            "sha256": "ff1048e3a14e9b9a138fb8d74130f04742aac7d0f0c2cde110669160d06a8959"
+          },
+          "child_rho=0.856_f_le_d.bin": {
+            "bytes": 4670748160,
+            "sha256": "21d260510f94dcf147f940e31ffe87c9f4deb8a0ff698f9b7b186e9c1b612127"
+          }
+        }
+      },
+      "d_steiner/f_le_d@rho=0.857": {
+        "status": "done",
+        "started_utc": "2026-08-17T23:33:34+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.857/f_le_d.log",
+        "wall_seconds": 34553.7,
+        "exit_code": 0,
+        "finished_utc": "2026-08-18T09:09:28+00:00",
+        "outputs": {
+          "certificate_rho=0.857_f_le_d.bin": {
+            "bytes": 62240169040,
+            "sha256": "25b3c668d924184fd1ce70dc1a5e28ac1c8db511e8cf2879fd0ca9841de16793"
+          },
+          "child_rho=0.857_f_le_d.bin": {
+            "bytes": 8886839872,
+            "sha256": "2d17b05c3a66ff191dda6c5f157533b5419021c54ba7a4a11275ee4c1cf1ba4d"
+          }
+        }
+      },
+      "d_steiner/f_ge_d@rho=0.857": {
+        "status": "done",
+        "started_utc": "2026-08-18T09:10:00+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.857/f_ge_d.log",
+        "wall_seconds": 32900.0,
+        "exit_code": 0,
+        "finished_utc": "2026-08-18T18:18:20+00:00",
+        "outputs": {
+          "certificate_rho=0.857_f_ge_d.bin": {
+            "bytes": 20686736356,
+            "sha256": "05d3512b377b3f2bbb295ae0f8d1df468602c1911cf5613281c560495bd97981"
+          },
+          "child_rho=0.857_f_ge_d.bin": {
+            "bytes": 13330744720,
+            "sha256": "d5c9f20669267c9b8beca616222e6e74d583118f73f85a24448293770c85a8ed"
+          }
+        }
+      },
+      "d_steiner/f_le_d@rho=0.858": {
+        "status": "done",
+        "started_utc": "2026-08-19T05:13:35+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.858/f_le_d.log",
+        "wall_seconds": 27865.2,
+        "exit_code": 0,
+        "finished_utc": "2026-08-19T12:58:00+00:00",
+        "outputs": {
+          "certificate_rho=0.858_f_le_d.bin": {
+            "bytes": 57447041820,
+            "sha256": "2f58eec08734b995dd20380353ad8e8fa8cdc67684ffd5d946a873949fe81c44"
+          },
+          "child_rho=0.858_f_le_d.bin": {
+            "bytes": 9434625840,
+            "sha256": "e14bd6a92639712f54e749b6c08fc3d7b311f1631018e293239552767fe3b7de"
+          }
+        }
+      },
+      "d_steiner/f_ge_d@rho=0.858": {
+        "status": "done",
+        "started_utc": "2026-08-19T12:58:29+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.858/f_ge_d.log",
+        "wall_seconds": 21823.1,
+        "exit_code": 0,
+        "finished_utc": "2026-08-19T19:02:12+00:00",
+        "outputs": {
+          "certificate_rho=0.858_f_ge_d.bin": {
+            "bytes": 45803679736,
+            "sha256": "a6cb5c796ecb96bfc90bac1c93cecb80d32d85e168c1c848844b1c393884ef94"
+          },
+          "child_rho=0.858_f_ge_d.bin": {
+            "bytes": 10089848800,
+            "sha256": "e8d62b22d41115b3b0537333ddbcfe9f7241ae10d7c5235926a6e717292b7403"
+          }
+        }
+      },
+      "d_steiner/f_le_d@rho=0.860": {
+        "status": "done",
+        "started_utc": "2026-08-19T19:06:12+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.860/f_le_d.log",
+        "wall_seconds": 26586.4,
+        "exit_code": 0,
+        "finished_utc": "2026-08-20T02:29:18+00:00",
+        "outputs": {
+          "certificate_rho=0.86_f_le_d.bin": {
+            "bytes": 40748842120,
+            "sha256": "464395956f33395b82f2a55738d5314ea20d60273229a2999e07e652fea6cac2"
+          },
+          "child_rho=0.86_f_le_d.bin": {
+            "bytes": 11342991520,
+            "sha256": "0031c439e7c1ca56e957d3967c387dfa96af0aba5a8ecb263042e3db7834a30e"
+          }
+        }
+      },
+      "d_steiner/f_ge_d@rho=0.860": {
+        "status": "done",
+        "started_utc": "2026-08-20T02:29:42+00:00",
+        "toolchain": {
+          "g++": "/opt/homebrew/bin/g++-16",
+          "g++ --version": "g++-16 (Homebrew GCC 16.1.0) 16.1.0"
+        },
+        "log": "/Users/jsavva/MathProof/steiner/vendor/regen/d_steiner@0.860/f_ge_d.log",
+        "wall_seconds": 22664.0,
+        "exit_code": 0,
+        "finished_utc": "2026-08-20T08:47:26+00:00",
+        "outputs": {
+          "certificate_rho=0.86_f_ge_d.bin": {
+            "bytes": 49686456892,
+            "sha256": "ab0d6e967eba66b63bb4cc4e4b82e49b59f2f2ad360e3d53d10a3611baba874b"
+          },
+          "child_rho=0.86_f_ge_d.bin": {
+            "bytes": 9588845296,
+            "sha256": "4a20ad30e03955aafa562768da456efbebf40a711b361500dd73486c424effb8"
+          }
+        }
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "d_regular/certificate_rho=0.8559_f_ge_d.bin",
+      "bytes": 173742092,
+      "sha256": "d6e27ecfd6e962efb4aed3df5e3bde948d1bc2c8909f2665d7f3aac3a943ff15",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular/certificate_rho=0.8559_f_le_d.bin",
+      "bytes": 6854366232,
+      "sha256": "b91c2c55ab4f9a400c459e613a53dab064960641f2502bd20226a1712513ef26",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular/child_rho=0.8559_f_ge_d.bin",
+      "bytes": 30215760,
+      "sha256": "44e4277afa00731df1ed7bf04c8a2fe0926906eaa75f3b144ca1142621cb6c2f",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular/child_rho=0.8559_f_le_d.bin",
+      "bytes": 1015461152,
+      "sha256": "abc3112bff6e880196b00d283bec5ced40f0a41000c980359b49fd29204a0c80",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.856/certificate_rho=0.856_f_ge_d.bin",
+      "bytes": 5581107044,
+      "sha256": "c9d449c27fe46012625b86af5439a1b34b790e60e5c9eec675ae8c07a903ff5b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.856/certificate_rho=0.856_f_le_d.bin",
+      "bytes": 7549342668,
+      "sha256": "182356ffa11f4b2b671c34b8fa1fa1e24a901f086a0d83665013bf74619ef00d",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.856/child_rho=0.856_f_ge_d.bin",
+      "bytes": 15029372944,
+      "sha256": "37b329b4b1a9e356c58baabeafcdab8450d81d9ad4d2299e0f76628a2ab970d7",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.856/child_rho=0.856_f_le_d.bin",
+      "bytes": 1118420624,
+      "sha256": "830e5b60b7b62caca8a4db2dec399acbc9f10dc9b50c5c4574cc0fd7fb395f0b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.857/certificate_rho=0.857_f_ge_d.bin",
+      "bytes": 6715580204,
+      "sha256": "9eab9a1ba11140da3785cf70908265ef8e0a6ecdcbc3ab0bea08f99c02f1e288",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.857/certificate_rho=0.857_f_le_d.bin",
+      "bytes": 17432544168,
+      "sha256": "9bfff5b4c7fff75194faa02fadfaa1e0e7b6d9cdae8c9bc8a99bd08278521088",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.857/child_rho=0.857_f_ge_d.bin",
+      "bytes": 14832073264,
+      "sha256": "0d6618d194e47c38176705fe356714d99b3d1d5d61ea4c4485e6a093070059b6",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.857/child_rho=0.857_f_le_d.bin",
+      "bytes": 2582598624,
+      "sha256": "6647a08aa210bc3fdae2428f91e778906430cf6fd1f92babc22be6baa0fe7c20",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.858/certificate_rho=0.858_f_ge_d.bin",
+      "bytes": 8067436668,
+      "sha256": "d6ba15b5c7c25838982bb019657dd446b2d443b747275ab56b2cb62cb86230d1",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.858/certificate_rho=0.858_f_le_d.bin",
+      "bytes": 48674293848,
+      "sha256": "eae8e36f4329d8a4de3849203f6492473180d55a1b0db4f71999401c803c5a2e",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.858/child_rho=0.858_f_ge_d.bin",
+      "bytes": 14596967792,
+      "sha256": "8407a2a60904392f86e5f1f8d112d62d93973c68e8cb66eddfa16ffcb1d71b24",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.858/child_rho=0.858_f_le_d.bin",
+      "bytes": 8788994016,
+      "sha256": "9ae344ab161f4fb122c413d8d7f7dca87f5c2888715533c6093bd3810b6f1fe8",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.860/certificate_rho=0.86_f_ge_d.bin",
+      "bytes": 9706795524,
+      "sha256": "66c44391167665b6a944231b1c9917549ffa6047c5e1c3ac6d7ef0487f42ea2b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.860/certificate_rho=0.86_f_le_d.bin",
+      "bytes": 33146071020,
+      "sha256": "d4a5c64d7e6e4fca404a9049cb5d253cb7c4390223e6bd1b02868462dea64271",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.860/child_rho=0.86_f_ge_d.bin",
+      "bytes": 14311861904,
+      "sha256": "0c9c26f57dee55260c18881663ff72af7672ea6bd79f7a779c8fe7eb0a8530bc",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.860/child_rho=0.86_f_le_d.bin",
+      "bytes": 11089471472,
+      "sha256": "6d4b57b535c3146fc0824bb5cbd2cacdfd619c394c10ab523e961ea9ce4ae77c",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.862/certificate_rho=0.862_f_ge_d.bin",
+      "bytes": 21632686524,
+      "sha256": "a2dbd8f3258d043b02210c03467352f42f459e8b0f40d83afd03a2d48af552f4",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.862/certificate_rho=0.862_f_le_d.bin",
+      "bytes": 23751975492,
+      "sha256": "eee90f819b82074706d2d73d5342b72b40a614d4cf39231852b4f2dff0d987e3",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.862/child_rho=0.862_f_ge_d.bin",
+      "bytes": 12237793904,
+      "sha256": "802d540767511927ef8f1a39c99431bd43f57306fd09b70a638d67c9298f580b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.862/child_rho=0.862_f_le_d.bin",
+      "bytes": 12481189328,
+      "sha256": "f4a5a94db3b5a12e271cd115fcf0ebbc1d876b97a9dd3ca4ef1ca40b5df59521",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.864/certificate_rho=0.864_f_ge_d.bin",
+      "bytes": 16565937496,
+      "sha256": "33c5f5aa52352cd78ef507ee7d838fed0a5413ee04018d413613b2ccfaaca5bf",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.864/certificate_rho=0.864_f_le_d.bin",
+      "bytes": 21576255984,
+      "sha256": "fe2d5363241ec1061b02070f184f100efd9ed11be12ed07c96f50009f7d4b817",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.864/child_rho=0.864_f_ge_d.bin",
+      "bytes": 13118967648,
+      "sha256": "9dfea5202dc3f76a205974ef3b22be649ace063d14395ad6b2d72dcffa64ac27",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.864/child_rho=0.864_f_le_d.bin",
+      "bytes": 12803518144,
+      "sha256": "96c4ecbda09f6f3d196c571670d48246840558f49e9a2310993d120cbd209765",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.865/certificate_rho=0.865_f_ge_d.bin",
+      "bytes": 13691517096,
+      "sha256": "73c20a289cfec81a99055fb48a43be20595483abd9cbc7079b17366716d4bf6b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.865/certificate_rho=0.865_f_le_d.bin",
+      "bytes": 21482706816,
+      "sha256": "216f0d92706f22cd3350cd90cf94773b447eff172769cbd8c510209fcfd49b30",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.865/child_rho=0.865_f_ge_d.bin",
+      "bytes": 13618866848,
+      "sha256": "c1b703b0fdae202eb6160ed565014725b3ca94e2ce49d1891f85ce0755aed3d5",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.865/child_rho=0.865_f_le_d.bin",
+      "bytes": 12817377280,
+      "sha256": "721f82c3182d87d4bdd2756f6df869f9015a543ede4b63ec0b907c0640a39c14",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.866/certificate_rho=0.866_f_ge_d.bin",
+      "bytes": 12248221188,
+      "sha256": "7665d026f781d31973f6bc5d85ebd0fa7fa4751a4cb721996bb8984c8a854949",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.866/certificate_rho=0.866_f_le_d.bin",
+      "bytes": 20985999048,
+      "sha256": "b28aae027aa4d829cb62760f9e06d56ed357da4657c10ef361393da818f0e534",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.866/child_rho=0.866_f_ge_d.bin",
+      "bytes": 13869874832,
+      "sha256": "30fce3313d8aa90fd6b804ecdd2252990773a13880dc2d0e1ccde46c80ebb5c0",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_regular@0.866/child_rho=0.866_f_le_d.bin",
+      "bytes": 12890963616,
+      "sha256": "542e68edb98423aba4ec4da332520773128159378b3b75766af584d10cfb1393",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner/certificate_rho=0.8559_f_ge_d.bin",
+      "bytes": 669965800,
+      "sha256": "d1ee33ee89bc79ca49d388444506c27a9b7bedcb674f3d9f89ecb129300db573",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner/certificate_rho=0.8559_f_le_d.bin",
+      "bytes": 36321033000,
+      "sha256": "2c3da6fc711b21cb816a07d3d983dc1ab0d1f9609bca8d5e6d7f8bb40c5563cf",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner/child_rho=0.8559_f_ge_d.bin",
+      "bytes": 86446176,
+      "sha256": "27ccd6fef8bd2137d33ac9ddb8949d290965f337fa5414598a054d63aaf3e503",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner/child_rho=0.8559_f_le_d.bin",
+      "bytes": 4150973152,
+      "sha256": "0567347e6d8f2ccadfb94c5a836a9c55d6f244b2545cf8ed5f3effcbb58d7943",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.856/certificate_rho=0.856_f_ge_d.bin",
+      "bytes": 17042850904,
+      "sha256": "a3a9681b76f257069e59513264f43f4a4cc89058fca042e0d03ed75508d03bad",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.856/certificate_rho=0.856_f_le_d.bin",
+      "bytes": 40869064320,
+      "sha256": "ff1048e3a14e9b9a138fb8d74130f04742aac7d0f0c2cde110669160d06a8959",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.856/child_rho=0.856_f_ge_d.bin",
+      "bytes": 13800923488,
+      "sha256": "c1314cf147cec9836e55ef20c4e64f6e454b69c333772eff72687a05127caf20",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.856/child_rho=0.856_f_le_d.bin",
+      "bytes": 4670748160,
+      "sha256": "21d260510f94dcf147f940e31ffe87c9f4deb8a0ff698f9b7b186e9c1b612127",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.857/certificate_rho=0.857_f_ge_d.bin",
+      "bytes": 20686736356,
+      "sha256": "05d3512b377b3f2bbb295ae0f8d1df468602c1911cf5613281c560495bd97981",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.857/certificate_rho=0.857_f_le_d.bin",
+      "bytes": 62240169040,
+      "sha256": "25b3c668d924184fd1ce70dc1a5e28ac1c8db511e8cf2879fd0ca9841de16793",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.857/child_rho=0.857_f_ge_d.bin",
+      "bytes": 13330744720,
+      "sha256": "d5c9f20669267c9b8beca616222e6e74d583118f73f85a24448293770c85a8ed",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.857/child_rho=0.857_f_le_d.bin",
+      "bytes": 8886839872,
+      "sha256": "2d17b05c3a66ff191dda6c5f157533b5419021c54ba7a4a11275ee4c1cf1ba4d",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.858/certificate_rho=0.858_f_ge_d.bin",
+      "bytes": 45803679736,
+      "sha256": "a6cb5c796ecb96bfc90bac1c93cecb80d32d85e168c1c848844b1c393884ef94",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.858/certificate_rho=0.858_f_le_d.bin",
+      "bytes": 57447041820,
+      "sha256": "2f58eec08734b995dd20380353ad8e8fa8cdc67684ffd5d946a873949fe81c44",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.858/child_rho=0.858_f_ge_d.bin",
+      "bytes": 10089848800,
+      "sha256": "e8d62b22d41115b3b0537333ddbcfe9f7241ae10d7c5235926a6e717292b7403",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.858/child_rho=0.858_f_le_d.bin",
+      "bytes": 9434625840,
+      "sha256": "e14bd6a92639712f54e749b6c08fc3d7b311f1631018e293239552767fe3b7de",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.860/certificate_rho=0.86_f_ge_d.bin",
+      "bytes": 49686456892,
+      "sha256": "ab0d6e967eba66b63bb4cc4e4b82e49b59f2f2ad360e3d53d10a3611baba874b",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.860/certificate_rho=0.86_f_le_d.bin",
+      "bytes": 40748842120,
+      "sha256": "464395956f33395b82f2a55738d5314ea20d60273229a2999e07e652fea6cac2",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.860/child_rho=0.86_f_ge_d.bin",
+      "bytes": 9588845296,
+      "sha256": "4a20ad30e03955aafa562768da456efbebf40a711b361500dd73486c424effb8",
+      "publisher_sha256": null
+    },
+    {
+      "path": "d_steiner@0.860/child_rho=0.86_f_le_d.bin",
+      "bytes": 11342991520,
+      "sha256": "0031c439e7c1ca56e957d3967c387dfa96af0aba5a8ecb263042e3db7834a30e",
+      "publisher_sha256": null
+    }
+  ],
+  "file_count": 56,
+  "total_bytes": 939969395276
+}

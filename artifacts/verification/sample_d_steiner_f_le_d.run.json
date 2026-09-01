@@ -1,0 +1,24 @@
+{
+  "kind": "vertex-parity-run",
+  "family": "d_steiner",
+  "subcase": "f_le_d",
+  "certificate": "vendor/dataset/d_steiner/certificate_rho=0.8559_f_le_d.bin",
+  "certificate_sha256": "08535b427c883fc8fe46c6e8e7d49f37d5f3d6765047265b693bf8d51d2913f4",
+  "records_in_file": 259435950,
+  "limit": null,
+  "sample": 10000,
+  "seed": 20260812,
+  "prec_ladder": [
+    128,
+    256,
+    512
+  ],
+  "schema": "steiner-audit/run/v1",
+  "code_revision": "d0aba7b712f8c14f13c946bb8481c8415a62d36e",
+  "started_utc": "2026-08-12T08:18:32+00:00",
+  "finished_utc": "2026-08-12T08:18:52+00:00",
+  "counts": {
+    "vertex_parity": 8278,
+    "skipped": 1722
+  }
+}

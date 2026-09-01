@@ -1,0 +1,26 @@
+{
+  "kind": "vertex-parity-run",
+  "family": "d_steiner",
+  "subcase": "f_ge_d",
+  "certificate": "vendor/regen/d_steiner/certificate_rho=0.8559_f_ge_d.bin",
+  "certificate_sha256": "d1ee33ee89bc79ca49d388444506c27a9b7bedcb674f3d9f89ecb129300db573",
+  "records_in_file": 5402950,
+  "limit": null,
+  "sample": null,
+  "seed": null,
+  "prec_ladder": [
+    128,
+    256,
+    512
+  ],
+  "mode": "vertex-parity",
+  "fullbox_budget": null,
+  "schema": "steiner-audit/run/v1",
+  "code_revision": "bca80191acd1422c4d59509b4df52f63a3532d78",
+  "started_utc": "2026-08-14T04:33:00+00:00",
+  "finished_utc": "2026-08-14T04:38:12+00:00",
+  "counts": {
+    "vertex_parity": 5397967,
+    "skipped": 4983
+  }
+}

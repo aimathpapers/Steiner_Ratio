@@ -1,0 +1,52 @@
+[project]
+name = "steiner-audit"
+version = "0.1.0"
+description = "Independent re-verification of the PKU 0.8559 Gilbert-Pollak certificate layer (MathProof M1)"
+requires-python = ">=3.12"
+dependencies = [
+    "python-flint>=0.8.0",
+    "mpmath>=1.3.0",
+    "huggingface-hub>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "mypy>=1.14",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/steiner_audit"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "oracle: splitting-function oracle suite (mpmath references, Julia spot-checks)",
+    "real_data: needs the acquired PKU dataset under vendor/ (deselect with '-m \"not real_data\"')",
+]
+
+[tool.mypy]
+strict = true
+files = ["src/steiner_audit"]
+
+[[tool.mypy.overrides]]
+module = "flint.*"
+ignore_missing_imports = true
+follow_untyped_imports = true
+
+[[tool.mypy.overrides]]
+# Independent mpmath reference implementations (oracle + capsule replay):
+# deliberately plain code, checked by the oracle suite rather than types.
+module = "steiner_audit.refmath.*"
+strict = false
+disallow_untyped_defs = false
+check_untyped_defs = false
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "mpmath.*"
+ignore_missing_imports = true

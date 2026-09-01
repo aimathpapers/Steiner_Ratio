@@ -1,0 +1,50 @@
+{
+  "schema": "steiner-audit/external-run/v1",
+  "kind": "their-checker-replays",
+  "date_utc": "2026-08-12",
+  "snapshot_commit": "709673a8926fed0ef981d7db36dafcdf6f4a8a1d",
+  "toolchain": {
+    "julia": "1.12.6",
+    "IntervalArithmetic.jl": "1.0.10",
+    "StaticArrays.jl": "1.9.18"
+  },
+  "machine": "Mac Studio, Apple Silicon (32 hardware threads), macOS 25.5.0",
+  "cases": [
+    {
+      "case": "d_regular/f_ge_d",
+      "command": "julia --threads auto verify_certificate.jl --f-ge-d",
+      "outcome": "All 1888501 regions verified.",
+      "wall_seconds": 92.4
+    },
+    {
+      "case": "d_regular/f_le_d",
+      "command": "julia --threads auto verify_certificate.jl --f-le-d",
+      "outcome": "All 63466354 regions verified."
+    },
+    {
+      "case": "d_steiner/f_ge_d",
+      "command": "julia --threads auto verify_certificate.jl --f-ge-d",
+      "outcome": "All 5402950 regions verified.",
+      "wall_seconds": 110.7
+    },
+    {
+      "case": "d_steiner/f_le_d",
+      "attempts": [
+        {
+          "command": "julia --threads auto verify_certificate.jl --f-le-d",
+          "outcome": "signal 11 (Segmentation fault) after ~8 minutes, at verify_certificate.jl:396"
+        },
+        {
+          "command": "julia --threads 8 verify_certificate.jl --f-le-d",
+          "outcome": "crash, task backtrace through verify_parallel at verify_certificate.jl:332; Allocations: 34895746035, GC: 40916"
+        },
+        {
+          "command": "julia --threads 1 verify_certificate.jl --f-le-d",
+          "outcome": "All 259435950 regions verified. (completed 2026-08-13; ~40 h wall per log timestamps)"
+        }
+      ],
+      "note": "OBS-7: both multithreaded configurations crash on this platform; the single-threaded fallback completed and verified all regions"
+    }
+  ],
+  "claim_scope": "their checker, their vertex-parity semantics, our machine; recorded as cross-check evidence, not as independent verification"
+}

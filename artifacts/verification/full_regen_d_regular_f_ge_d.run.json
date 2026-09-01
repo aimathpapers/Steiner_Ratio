@@ -1,0 +1,26 @@
+{
+  "kind": "vertex-parity-run",
+  "family": "d_regular",
+  "subcase": "f_ge_d",
+  "certificate": "vendor/regen/d_regular/certificate_rho=0.8559_f_ge_d.bin",
+  "certificate_sha256": "d6e27ecfd6e962efb4aed3df5e3bde948d1bc2c8909f2665d7f3aac3a943ff15",
+  "records_in_file": 1888501,
+  "limit": null,
+  "sample": null,
+  "seed": null,
+  "prec_ladder": [
+    128,
+    256,
+    512
+  ],
+  "mode": "vertex-parity",
+  "fullbox_budget": null,
+  "schema": "steiner-audit/run/v1",
+  "code_revision": "3c505a3edac75242a73bc3567d1a385d7fc025ee",
+  "started_utc": "2026-08-12T08:32:55+00:00",
+  "finished_utc": "2026-08-12T08:43:00+00:00",
+  "counts": {
+    "vertex_parity": 1888501
+  },
+  "correction_note": "certificate_sha256 originally recorded the published file hash due to a basename-keyed lookup bug (fixed in verify.py); corrected 2026-08-13 to the regenerated file hash per regen_manifest.json"
+}
